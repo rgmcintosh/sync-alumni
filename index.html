@@ -677,26 +677,89 @@
         padding: 3rem 0;
       }
       .pricing-table {
-        padding: 2rem 1.2rem 1.5rem 1.2rem;
-      }
-      .pricing-table {
-        grid-template-columns: 1fr;
+        padding: 1.5rem 1rem;
         overflow-x: auto;
       }
       .pricing-header {
-        grid-template-columns: 1fr;
-        gap: 1rem;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 0.5rem;
+        padding-bottom: 1.5rem;
       }
       .feature-column {
-        text-align: center;
+        text-align: left;
+        font-size: 1rem;
         padding-top: 0;
       }
       .tier-column {
-        border-top: 1px solid #e0e7ef;
-        padding-top: 1rem;
+        text-align: center;
+        padding-top: 0;
+        border-top: none;
+      }
+      .tier-column h3 {
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+      }
+      .price {
+        font-size: 1.4rem;
+      }
+      .period {
+        font-size: 0.8rem;
+      }
+      .btn-sm {
+        font-size: 0.75rem;
+        padding: 0.3rem 0.8rem;
+      }
+      .pricing-row {
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 0.5rem;
+        padding: 0.5rem 0;
+      }
+      .feature-name {
+        font-size: 0.9rem;
+        text-align: left;
+      }
+      .tier-check {
+        text-align: center;
+        font-size: 1rem;
       }
       .incentive-card {
         padding: 1.5rem 1rem;
+      }
+    }
+    @media (max-width: 480px) {
+      .pricing-table {
+        padding: 1rem 0.5rem;
+      }
+      .pricing-header {
+        gap: 0.25rem;
+        padding-bottom: 1rem;
+      }
+      .feature-column {
+        font-size: 0.9rem;
+      }
+      .tier-column h3 {
+        font-size: 1rem;
+        margin-bottom: 0.25rem;
+      }
+      .price {
+        font-size: 1.2rem;
+      }
+      .period {
+        font-size: 0.7rem;
+      }
+      .btn-sm {
+        font-size: 0.7rem;
+        padding: 0.25rem 0.6rem;
+      }
+      .pricing-row {
+        gap: 0.25rem;
+        padding: 0.4rem 0;
+      }
+      .feature-name {
+        font-size: 0.8rem;
+      }
+      .tier-check {
+        font-size: 0.9rem;
       }
     }
     .pricing-badge {
