@@ -677,91 +677,85 @@
         padding: 3rem 0;
       }
       .pricing-table {
-        padding: 1.5rem 1rem;
-        overflow-x: auto;
+        display: none;
       }
-      .pricing-header {
-        grid-template-columns: 1fr 1fr 1fr;
-        gap: 0.5rem;
-        padding-bottom: 1.5rem;
+      
+      /* Mobile pricing cards */
+      .mobile-pricing {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        max-width: 400px;
+        margin: 0 auto;
       }
-      .feature-column {
-        text-align: left;
-        font-size: 1rem;
-        padding-top: 0;
-      }
-      .tier-column {
+      
+      .mobile-pricing-card {
+        background: var(--bg-white);
+        border-radius: 16px;
+        padding: 2rem 1.5rem;
+        box-shadow: var(--shadow-md);
+        border: 1px solid #e0e7ef;
         text-align: center;
-        padding-top: 0;
-        border-top: none;
       }
-      .tier-column h3 {
-        font-size: 1.1rem;
+      
+      .mobile-pricing-card h3 {
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: var(--text-dark);
         margin-bottom: 0.5rem;
       }
-      .price {
-        font-size: 1.4rem;
+      
+      .mobile-pricing-card .price {
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--primary-color);
+        margin-bottom: 0.5rem;
       }
-      .period {
-        font-size: 0.8rem;
-      }
-      .btn-sm {
-        font-size: 0.75rem;
-        padding: 0.3rem 0.8rem;
-      }
-      .pricing-row {
-        grid-template-columns: 1fr 1fr 1fr;
-        gap: 0.5rem;
-        padding: 0.5rem 0;
-      }
-      .feature-name {
+      
+      .mobile-pricing-card .period {
         font-size: 0.9rem;
+        color: var(--text-light);
+        margin-bottom: 1.5rem;
+      }
+      
+      .mobile-pricing-card .features {
         text-align: left;
+        margin-bottom: 1.5rem;
       }
-      .tier-check {
-        text-align: center;
-        font-size: 1rem;
+      
+      .mobile-pricing-card .feature-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 0.75rem;
+        font-size: 0.95rem;
       }
+      
+      .mobile-pricing-card .feature-item i {
+        margin-right: 0.75rem;
+        width: 16px;
+      }
+      
+      .mobile-pricing-card .btn {
+        width: 100%;
+        margin-top: 1rem;
+      }
+      
       .incentive-card {
         padding: 1.5rem 1rem;
       }
     }
-    @media (max-width: 480px) {
-      .pricing-table {
-        padding: 1rem 0.5rem;
-      }
-      .pricing-header {
-        gap: 0.25rem;
-        padding-bottom: 1rem;
-      }
-      .feature-column {
-        font-size: 0.9rem;
-      }
-      .tier-column h3 {
-        font-size: 1rem;
-        margin-bottom: 0.25rem;
-      }
-      .price {
-        font-size: 1.2rem;
-      }
-      .period {
-        font-size: 0.7rem;
-      }
-      .btn-sm {
-        font-size: 0.7rem;
-        padding: 0.25rem 0.6rem;
-      }
-      .pricing-row {
-        gap: 0.25rem;
-        padding: 0.4rem 0;
-      }
-      .feature-name {
-        font-size: 0.8rem;
-      }
-      .tier-check {
-        font-size: 0.9rem;
+    
+    /* Mobile pricing is hidden by default, shown only on mobile */
+    .mobile-pricing {
+      display: none;
+    }
+    
+    @media (max-width: 768px) {
+      .mobile-pricing {
+        display: flex !important;
       }
     }
+
     .pricing-badge {
       display: inline-block;
       font-size: 0.95rem;
@@ -1193,32 +1187,101 @@
           </div>
           <div class="pricing-row">
             <div class="feature-name">Create & Share Jobs, Network Messages</div>
-            <div class="tier-check"><i class="fas fa-times text-muted"></i></div>
+            <div class="tier-check"></div>
             <div class="tier-check"><i class="fas fa-check text-success"></i></div>
           </div>
           <div class="pricing-row">
             <div class="feature-name">Unlimited Alumni</div>
-            <div class="tier-check"><i class="fas fa-times text-muted"></i></div>
+            <div class="tier-check"></div>
             <div class="tier-check"><i class="fas fa-check text-success"></i></div>
           </div>
           <div class="pricing-row">
             <div class="feature-name">Export Team Data</div>
-            <div class="tier-check"><i class="fas fa-times text-muted"></i></div>
+            <div class="tier-check"></div>
             <div class="tier-check"><i class="fas fa-check text-success"></i></div>
           </div>
           <div class="pricing-row">
             <div class="feature-name">1-on-1 Onboarding Support</div>
-            <div class="tier-check"><i class="fas fa-times text-muted"></i></div>
+            <div class="tier-check"></div>
             <div class="tier-check"><i class="fas fa-check text-success"></i></div>
           </div>
         </div>
       </div>
+      
+      <!-- Mobile Pricing Cards -->
+      <div class="mobile-pricing">
+        <!-- Standard Plan Card -->
+        <div class="mobile-pricing-card">
+          <h3>Standard</h3>
+          <div class="price">
+            <span class="price-monthly">$0<span class="period">/month</span></span>
+            <span class="price-yearly" style="display: none;">$0<span class="period">/year</span></span>
+          </div>
+          <div class="features">
+            <div class="feature-item">
+              <i class="fas fa-check text-success"></i>
+              <span>Fully Functional Team Instance</span>
+            </div>
+            <div class="feature-item">
+              <i class="fas fa-check text-success"></i>
+              <span>Alumni Directory Access</span>
+            </div>
+            <div class="feature-item">
+              <i class="fas fa-check text-success"></i>
+              <span>Network Access</span>
+            </div>
+            <div class="feature-item">
+              <i class="fas fa-check text-success"></i>
+              <span>Post & View Team Feed</span>
+            </div>
+            <div class="feature-item">
+              <i class="fas fa-check text-success"></i>
+              <span>Create & Share Events</span>
+            </div>
+            <div class="feature-item">
+              <i class="fas fa-check text-success"></i>
+              <span>RSVP to Events & Apply to Jobs</span>
+            </div>
+          </div>
+          <a href="#demo" class="btn btn-outline-primary">Get Started</a>
+        </div>
+        
+        <!-- SyncAlumni+ Plan Card -->
+        <div class="mobile-pricing-card">
+          <h3>SyncAlumni+</h3>
+          <div class="price">
+            <span class="price-monthly">$9<span class="period">/month</span></span>
+            <span class="price-yearly" style="display: none;">$99<span class="period">/year</span></span>
+          </div>
+          <div class="features">
+            <div style="font-weight: 500; color: var(--primary-dark); margin-bottom: 1rem;">Everything in Standard, plus:</div>
+            <div class="feature-item">
+              <i class="fas fa-check text-success"></i>
+              <span>Create & Share Jobs, Network Messages</span>
+            </div>
+            <div class="feature-item">
+              <i class="fas fa-check text-success"></i>
+              <span>Unlimited Alumni</span>
+            </div>
+            <div class="feature-item">
+              <i class="fas fa-check text-success"></i>
+              <span>Export Team Data</span>
+            </div>
+            <div class="feature-item">
+              <i class="fas fa-check text-success"></i>
+              <span>1-on-1 Onboarding Support</span>
+            </div>
+          </div>
+          <a href="#demo" class="btn btn-primary">Upgrade Now</a>
+        </div>
+      </div>
+      
       <!-- Onboarding Incentive -->
       <div class="onboarding-incentive-offer text-center mt-5">
         <div class="incentive-card">
           <h4 class="incentive-title mb-3">Limited Time Offer: Free SyncAlumni+ for a Year!</h4>
           <p class="mb-3">Get 25+ alumni registered in your first month and unlock a full year of SyncAlumni+ for free, including unlimited alumni. Continue on the standard plan or cancel anytime after.</p>
-          <a href="#demo" class="btn btn-success">Start Your Free Trial</a>
+          <a href="#demo" class="btn btn-success">Get Started</a>
         </div>
       </div>
     </div>
