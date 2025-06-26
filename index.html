@@ -1358,8 +1358,11 @@
       <h2 class="section-title">Get Started with SyncAlumni</h2>
       <p class="section-subtitle">Tell us about your team and what you're looking to achieve with SyncAlumni.</p>
       <div class="contact-form">
-        <form action="https://formspree.io/f/xkgononp" method="POST">
-          <input type="hidden" name="_next" value="https://syncalumni.com/thank-you" />
+        <form name="intake" method="POST" data-netlify="true" netlify data-netlify-honeypot="bot-field" action="/thank-you.html">
+          <input type="hidden" name="form-name" value="intake" />
+          <p style="display:none">
+            <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+          </p>
           <div class="mb-3">
             <input type="text" class="form-control" name="name" id="name" placeholder="Your Name" required>
           </div>
