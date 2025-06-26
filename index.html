@@ -382,6 +382,55 @@
       resize: vertical;
     }
 
+    /* Checkbox Group Styles */
+    .checkbox-group {
+      background: var(--bg-light);
+      border-radius: 12px;
+      padding: 1.5rem;
+      border: 1px solid #e2e8f0;
+    }
+
+    .form-check {
+      margin-bottom: 0.75rem;
+    }
+
+    .form-check:last-child {
+      margin-bottom: 0;
+    }
+
+    .form-check-input {
+      width: 1.2em;
+      height: 1.2em;
+      margin-top: 0.1em;
+      border: 2px solid #cbd5e1;
+      border-radius: 4px;
+      transition: all 0.2s ease;
+    }
+
+    .form-check-input:checked {
+      background-color: var(--primary-color);
+      border-color: var(--primary-color);
+    }
+
+    .form-check-input:focus {
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 0.2rem rgba(37, 99, 235, 0.25);
+    }
+
+    .form-check-label {
+      font-size: 0.95rem;
+      color: var(--text-dark);
+      cursor: pointer;
+      padding-left: 0.5rem;
+      line-height: 1.4;
+    }
+
+    .form-label {
+      color: var(--text-dark);
+      margin-bottom: 1rem;
+      font-size: 1rem;
+    }
+
     /* Footer */
     footer {
       background: linear-gradient(135deg, var(--text-dark), #334155);
@@ -1306,8 +1355,8 @@
   <!-- Contact Section -->
   <section id="contact" class="contact-section">
     <div class="container">
-      <h2 class="section-title">Get in Touch</h2>
-      <p class="section-subtitle">Interested in SyncAlumni? Let us know how we can help your team stay connected!</p>
+      <h2 class="section-title">Get Started with SyncAlumni</h2>
+      <p class="section-subtitle">Tell us about your team and what you're looking to achieve with SyncAlumni.</p>
       <div class="contact-form">
         <form action="https://formspree.io/f/xkgononp" method="POST">
           <input type="hidden" name="_next" value="https://syncalumni.com/thank-you" />
@@ -1315,13 +1364,74 @@
             <input type="text" class="form-control" name="name" id="name" placeholder="Your Name" required>
           </div>
           <div class="mb-3">
+            <input type="text" class="form-control" name="team" id="team" placeholder="Organization Name" required>
+          </div>
+          <div class="mb-3">
             <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
           </div>
+          <div class="mb-3">
+            <select class="form-control" name="alumni_count" id="alumniCount" required>
+              <option value="" disabled selected>How many alumni do you have?</option>
+              <option value="1-25">1-25 alumni</option>
+              <option value="26-50">26-50 alumni</option>
+              <option value="51-100">51-100 alumni</option>
+              <option value="101-250">101-250 alumni</option>
+              <option value="251-500">251-500 alumni</option>
+              <option value="500+">500+ alumni</option>
+            </select>
+          </div>
           <div class="mb-4">
-            <textarea class="form-control" name="message" id="message" placeholder="Tell us about your team and how we can help..." required></textarea>
+            <label class="form-label fw-semibold">What are you hoping to get out of SyncAlumni?</label>
+            <div class="checkbox-group">
+              <div class="form-check mb-2">
+                <input class="form-check-input" type="checkbox" name="goals" value="reconnect" id="reconnect">
+                <label class="form-check-label" for="reconnect">
+                  Reconnect with alumni
+                </label>
+              </div>
+              <div class="form-check mb-2">
+                <input class="form-check-input" type="checkbox" name="goals" value="events" id="events">
+                <label class="form-check-label" for="events">
+                  Plan alumni events
+                </label>
+              </div>
+              <div class="form-check mb-2">
+                <input class="form-check-input" type="checkbox" name="goals" value="fundraise" id="fundraise">
+                <label class="form-check-label" for="fundraise">
+                  Fundraise
+                </label>
+              </div>
+              <div class="form-check mb-2">
+                <input class="form-check-input" type="checkbox" name="goals" value="organize" id="organize">
+                <label class="form-check-label" for="organize">
+                  Keep alumni contact info organized
+                </label>
+              </div>
+              <div class="form-check mb-2">
+                <input class="form-check-input" type="checkbox" name="goals" value="jobs" id="jobs">
+                <label class="form-check-label" for="jobs">
+                  Share job opportunities
+                </label>
+              </div>
+              <div class="form-check mb-2">
+                <input class="form-check-input" type="checkbox" name="goals" value="network" id="network">
+                <label class="form-check-label" for="network">
+                  Join the broader college hockey alumni network
+                </label>
+              </div>
+              <div class="form-check mb-2">
+                <input class="form-check-input" type="checkbox" name="goals" value="other" id="other">
+                <label class="form-check-label" for="other">
+                  Other
+                </label>
+              </div>
+              <div class="other-text-field" id="otherTextField" style="display: none;">
+                <input type="text" class="form-control mt-2" name="other_goal" id="otherGoal" placeholder="Tell us what you have in mind...">
+              </div>
+            </div>
           </div>
           <button type="submit" class="btn cta-button w-100">
-            <i class="fas fa-paper-plane me-2"></i>Send Message
+            <i class="fas fa-envelope me-2"></i>Request Free Invite Link
           </button>
         </form>
       </div>
@@ -1379,6 +1489,21 @@
         monthlyPrices.forEach(price => (price.style.display = 'inline'));
         yearlyPrices.forEach(price => (price.style.display = 'none'));
         upgradeBtn.href = upgradeBtn.dataset.monthly;
+      }
+    });
+
+    // Other checkbox functionality
+    document.getElementById('other').addEventListener('change', function () {
+      const otherTextField = document.getElementById('otherTextField');
+      const otherGoalInput = document.getElementById('otherGoal');
+      
+      if (this.checked) {
+        otherTextField.style.display = 'block';
+        otherGoalInput.required = true;
+      } else {
+        otherTextField.style.display = 'none';
+        otherGoalInput.required = false;
+        otherGoalInput.value = '';
       }
     });
   </script>
