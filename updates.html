@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SyncAlumni Updates & Changelog</title>
+  <meta name="description" content="See the latest updates and changelog for SyncAlumni.">
+  <link rel="icon" type="image/png" href="images/icon-logo.png">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary-color: #0891b2;
+      --primary-dark: #0e7490;
+      --secondary-color: #64748b;
+      --accent-color: #f59e0b;
+      --text-dark: #1e293b;
+      --text-light: #64748b;
+      --bg-light: #f8fafc;
+      --bg-white: #ffffff;
+      --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+      --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+      --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+      --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+    }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background-color: var(--bg-light);
+      color: var(--text-dark);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    .navbar {
+      background: rgba(255, 255, 255, 0.95) !important;
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+      padding: 1rem 0;
+      transition: all 0.3s ease;
+    }
+    .navbar-brand img.wordmark-logo {
+      height: 32px;
+      transition: transform 0.3s ease;
+    }
+    .navbar-brand:hover img.wordmark-logo {
+      transform: scale(1.05);
+    }
+    .nav-link {
+      font-weight: 500;
+      color: var(--text-dark) !important;
+      margin: 0 0.5rem;
+      padding: 0.5rem 1rem !important;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+    .nav-link:hover {
+      color: var(--primary-color) !important;
+      background-color: rgba(37, 99, 235, 0.1);
+      transform: translateY(-1px);
+    }
+    .updates-header {
+      text-align: center;
+      margin-bottom: 3rem;
+      margin-top: 4rem;
+    }
+    .updates-header h1 {
+      font-size: clamp(2.2rem, 5vw, 3rem);
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 0.5rem;
+    }
+    .updates-header p {
+      color: var(--text-light);
+      font-size: 1.15rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .newsletter-signup {
+      background: linear-gradient(135deg, #0ea5e9, #0284c7);
+      color: white;
+      padding: 2rem;
+      border-radius: 16px;
+      text-align: center;
+      margin-bottom: 2.5rem;
+      box-shadow: var(--shadow-md);
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .newsletter-signup h3 {
+      margin-bottom: 0.5rem;
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+    .newsletter-signup p {
+      margin-bottom: 1rem;
+      opacity: 0.95;
+    }
+    .newsletter-form {
+      display: flex;
+      gap: 0.75rem;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+    .newsletter-form input {
+      flex: 1;
+      padding: 0.75rem 1rem;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+    .newsletter-form button {
+      padding: 0.75rem 1.5rem;
+      background: white;
+      color: #0ea5e9;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .newsletter-form button:hover {
+      background: #f1f5f9;
+    }
+    .changelog-entry {
+      background: var(--bg-white);
+      border-radius: 16px;
+      padding: 2.5rem 2rem;
+      margin-bottom: 2.5rem;
+      box-shadow: var(--shadow-md);
+      border-left: 5px solid var(--primary-color);
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .changelog-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+    .changelog-date {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--text-dark);
+    }
+    .version-tag {
+      background: #e0f2fe;
+      color: #0891b2;
+      padding: 4px 14px;
+      border-radius: 20px;
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+    .changelog-section {
+      margin-bottom: 1.5rem;
+    }
+    .changelog-section:last-child {
+      margin-bottom: 0;
+    }
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+      color: var(--primary-dark);
+    }
+    .section-title .emoji {
+      font-size: 1.2rem;
+    }
+    .changelog-list {
+      list-style: none;
+      padding-left: 0;
+    }
+    .changelog-list li {
+      padding: 8px 0 8px 20px;
+      border-bottom: 1px solid #f1f5f9;
+      position: relative;
+    }
+    .changelog-list li:before {
+      content: "•";
+      color: var(--primary-color);
+      font-weight: bold;
+      position: absolute;
+      left: 0;
+    }
+    .changelog-list li:last-child {
+      border-bottom: none;
+    }
+    .highlight {
+      background: #fef3c7;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-weight: 500;
+    }
+    .back-link {
+      text-align: center;
+      margin-top: 2.5rem;
+    }
+    .back-link a {
+      color: var(--primary-color);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .back-link a:hover {
+      text-decoration: underline;
+    }
+    @media (max-width: 640px) {
+      .updates-header h1 {
+        font-size: 2rem;
+      }
+      .newsletter-form {
+        flex-direction: column;
+      }
+      .changelog-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .changelog-entry {
+        padding: 1.5rem 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="/">
+        <img src="images/wordmark-logo.png" alt="SyncAlumni Wordmark Logo" class="wordmark-logo">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/">Home</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="container" style="margin-top: 90px;">
+    <div class="updates-header">
+      <h1>Updates & Changelog</h1>
+      <p>Stay up to date with the latest SyncAlumni features and improvements.</p>
+    </div>
+    <!-- Newest update goes here -->
+    <div class="changelog-entry">
+      <div class="changelog-header">
+        <div class="changelog-date">July 18, 2025</div>
+        <div class="version-tag">v1.0.1</div>
+      </div>
+      <div class="changelog-section">
+        <div class="section-title">
+          <span class="emoji">🚀</span>
+          New Features
+        </div>
+        <ul class="changelog-list">
+          <li>Added an onboarding guide for new users to help teams get started quickly and easily.</li>
+          <li>Team leaders can now send a mass email notification to all members when creating events.</li>
+          <li>Team leaders can now enable a public-facing alumni page to showcase your group online for anyone to view.</li>
+        </ul>
+      </div>
+      <div class="changelog-section">
+        <div class="section-title">
+          <span class="emoji">🎨</span>
+          Improvements
+        </div>
+        <ul class="changelog-list">
+          <li>Updated the registration experience: the process is now chunked into steps for a cleaner, less overwhelming flow (instead of one long list).</li>
+        </ul>
+      </div>
+      <!-- Add more changelog-section blocks as needed -->
+    </div>
+    <!-- Initial Launch entry below -->
+    <div class="changelog-entry">
+      <div class="changelog-header">
+        <div class="changelog-date">July 18, 2025</div>
+        <div class="version-tag">Initial Launch</div>
+      </div>
+      <div class="changelog-section">
+        <div class="section-title">
+          <span class="emoji">🎉</span>
+          Welcome!
+        </div>
+        <ul class="changelog-list">
+          <li>We’re excited to launch our public <span class="highlight">Updates & Changelog</span> page! Here you’ll find the latest news, improvements, and feature releases for SyncAlumni.</li>
+          <li>Stay tuned for regular updates as we continue to build and improve the platform for alumni teams everywhere.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="back-link">
+      <a href="/">&larr; Back to SyncAlumni</a>
+    </div>
+  </div>
+  <footer style="background: linear-gradient(135deg, var(--text-dark), #334155); color: var(--bg-white); padding: 3rem 0 2rem; text-align: center; margin-top: 4rem;">
+    <div class="container">
+      <div class="footer-content" style="display: flex; flex-direction: column; align-items: center; gap: 1rem;">
+        <h3 class="footer-brand" style="color: var(--bg-white); font-size: 1.5rem; font-weight: 600; margin: 0; opacity: 0.9;">SyncAlumni</h3>
+        <p class="footer-text" style="opacity: 0.9; font-size: 0.9rem; color: var(--bg-white);">© 2025 SyncAlumni. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html> 
